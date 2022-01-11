@@ -13,8 +13,7 @@ public class _Consumer {
         //Consumer Functional interface
         greetCustomerConsumer.accept(vinita);
 
-        Activity badminton = new Activity("Badminton", "1 hour");
-        assignActivityToConsumer.accept(vinita, badminton);
+        assignActivityToConsumer.accept(vinita, new Activity("Badminton", "1 hour"));
     }
 
     //Consumer Function
