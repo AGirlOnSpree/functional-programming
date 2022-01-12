@@ -1,13 +1,15 @@
-package imperative;
+package streams;
 
-import java.util.ArrayList;
+import imperative.Main;
+
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-import static imperative.Main.Gender.FEMALE;
-import static imperative.Main.Gender.MALE;
+import static streams._Stream.Gender.FEMALE;
+import static streams._Stream.Gender.MALE;
 
-public class Main {
+public class _Stream {
 
     public static void main(String[] args) {
         List<Person> people = List.of(
@@ -19,24 +21,9 @@ public class Main {
                 new Person("Tanvi", FEMALE)
         );
 
-        System.out.println("Imperative approach");
-        //Imperative approach
-        List<Person> females = new ArrayList<>();
-        for (Person person : people) {
-            if (person.gender.equals(FEMALE)) {
-                females.add(person);
-            }
-        }
-
-        for (Person female : females) {
-            System.out.println(female);
-        }
-
-        System.out.println("Declarative approach");
-        //Declarative approach
-        Predicate<Person> personPredicate = person -> person.gender.equals(FEMALE);
         people.stream()
-                .filter(personPredicate)
+                .map(person -> person.name)
+                .mapToInt(String::length)
                 .forEach(System.out::println);
     }
 
